@@ -10,9 +10,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieComponent } from './movie/movie.component';
+import { SelectedMovieComponent } from './movie/selected-movie.component';
 import { MoviesComponent } from './movies/movies.component';
+import { TheMovieDBService } from './services/themoviedb.service';
 
-import { moviesReducer } from './store/movies.reducers';
+import { reducers } from './store/reducers';
 import { MoviesEffects } from './store/movies.effects';
 import { environment } from '../environments/environment';
 
@@ -21,6 +23,7 @@ import { environment } from '../environments/environment';
   declarations: [
     AppComponent,
     MovieComponent,
+    SelectedMovieComponent,
     MoviesComponent
   ],
   imports: [
@@ -28,11 +31,11 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    StoreModule.forRoot({moviesReducer}),
+    StoreModule.forRoot(reducers),
     EffectsModule.forRoot([MoviesEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [],
+  providers: [TheMovieDBService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

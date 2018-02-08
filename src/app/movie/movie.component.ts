@@ -1,26 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import { map } from 'rxjs/operators';
 
 import * as MoviesActions from '../store/movies.actions';
 import * as fromMovies from '../store/movies.reducers';
+import * as fromStore from '../store/reducers';
 
 @Component({
-  selector: 'app-movie',
-  templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.css']
+  selector: 'app-movie-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <app-selected-movie-page></app-selected-movie-page>
+  `,
 })
-export class MovieComponent implements OnInit {
-  id: number;
-  movieStore: Observable<fromMovies.State>;
+export class MovieComponent {
+  movieStore: Subscription;
 
-  constructor(private route: ActivatedRoute, private store: Store<any>) { }
+  constructor(store: Store<fromStore.AppState>, route: ActivatedRoute) {
+    this.movieStore = route.params
+      .pipe(map(params => new MoviesActions.Select(params.id))).subscribe(store);   
+  }
 
-  ngOnInit() {
-    this.id = +this.route.snapshot.paramMap.get('id');
-    this.movieStore = this.store.select('moviesReducer');
-    this.store.dispatch(new MoviesActions.GetMovie(this.id));
+  ngOnDestroy() {
+    this.movieStore.unsubscribe();
   }
 
 }

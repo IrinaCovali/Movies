@@ -5,6 +5,7 @@ export const GET_MOVIES = 'GET_MOVIES';
 export const SEARCH_MOVIES = 'SEARCH_MOVIES';
 export const FOUND_MOVIES = 'FOUND_MOVIES';
 export const GET_MOVIE = 'GET_MOVIE';
+export const SELECT = 'SELECT';
 
 export class ShowMovies implements Action {
   readonly type = SHOW_MOVIES;
@@ -30,4 +31,10 @@ export class GetMovie implements Action {
   constructor(public payload: number) {}
 }
 
-export type MoviesActions = ShowMovies | GetMovies | SearchMovies | FoundMovies | GetMovie;
+export class Select implements Action {
+  readonly type = SELECT;
+
+  constructor(public payload: string) {}
+}
+
+export type MoviesActions = ShowMovies | GetMovies | SearchMovies | FoundMovies | GetMovie | Select;

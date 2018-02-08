@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
+import { TheMovieDBService } from '../services/themoviedb.service';
 import * as MoviesActions from './movies.actions';
-import * as ApiConfig from '../api-config/index';
 
 @Injectable()
 export class MoviesEffects {
@@ -13,7 +13,7 @@ export class MoviesEffects {
   moviesShow = this.actions$
     .ofType(MoviesActions.SHOW_MOVIES)
     .switchMap((action: MoviesActions.ShowMovies) => {
-      return this.http.get(ApiConfig.url + ApiConfig.url_params.Top + ApiConfig.api_key)
+      return this.moviesService.retrieveTopRated();
     })
     .map((movies) => {
       return {
@@ -22,14 +22,14 @@ export class MoviesEffects {
       }
     });
 
-    @Effect()
-    moviesSearch = this.actions$
+  @Effect()
+  moviesSearch = this.actions$
     .ofType(MoviesActions.SEARCH_MOVIES)
     .map((action: MoviesActions.SearchMovies) => {
       return action.payload;
     })
     .switchMap((term: string) => {      
-      return this.http.get(ApiConfig.url + ApiConfig.url_params.Search + ApiConfig.api_key + `&query=${term}`)
+      return this.moviesService.searchMovies(term);
     })
     .map((found) => {
       return {
@@ -38,5 +38,5 @@ export class MoviesEffects {
       }
     });
 
-  constructor(private actions$: Actions, private http: HttpClient) {}
+  constructor(private actions$: Actions, private moviesService: TheMovieDBService) {}
 }
