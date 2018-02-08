@@ -1,4 +1,0 @@
-<div><strong>Title:</strong> {{ (movie | async).title }}</div>
-<div><strong>Overview:</strong> {{ (movie | async).overview }}</div>
-<div><strong>Release date:</strong> {{ ((movie | async).release_date) | date:fullDate }} </div>
-<img [src]="moviePath + (movie | async).poster_path" />

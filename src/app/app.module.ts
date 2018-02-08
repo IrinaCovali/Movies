@@ -8,13 +8,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { MovieComponent } from './movie/movie.component';
-import { SelectedMovieComponent } from './movie/selected-movie.component';
-import { MoviesComponent } from './movies/movies.component';
+import { AppComponent } from './components/app.component';
+import { MovieComponent } from './components/movie.component/index';
+import { SelectedMovieComponent } from './components/selected-movie.component';
+import { MoviesComponent } from './components/movies.component';
 import { TheMovieDBService } from './services/themoviedb.service';
 
-import { reducers } from './store/reducers';
+import { reducers } from './reducers';
 import { MoviesEffects } from './store/movies.effects';
 import { environment } from '../environments/environment';
 

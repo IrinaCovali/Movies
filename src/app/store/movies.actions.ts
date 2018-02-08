@@ -1,5 +1,7 @@
 import { Action } from '@ngrx/store';
 
+import { Movie } from '../models/movie';
+
 export const SHOW_MOVIES = 'SHOW_MOVIES';
 export const GET_MOVIES = 'GET_MOVIES';
 export const SEARCH_MOVIES = 'SEARCH_MOVIES';
@@ -13,7 +15,7 @@ export class ShowMovies implements Action {
 
 export class GetMovies implements Action {
   readonly type = GET_MOVIES;
-  constructor(public payload: [{}]) {}
+  constructor(public payload: Movie[]) {}
 }
 
 export class SearchMovies implements Action {
@@ -23,7 +25,7 @@ export class SearchMovies implements Action {
 
 export class FoundMovies implements Action {
   readonly type = FOUND_MOVIES;
-  constructor(public payload: [{}]) {}
+  constructor(public payload: Movie[]) {}
 }
 
 export class GetMovie implements Action {

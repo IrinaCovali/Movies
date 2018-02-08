@@ -1,13 +1,14 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-import * as MoviesActions from '../movies.actions';
+import * as MoviesActions from './movies.actions';
+import { Movie } from '../models/movie'
 
-export interface State extends EntityState<{}> {
-  movies: [{}],
-  found: [{}],
+export interface State extends EntityState<Movie> {
+  movies: Movie[],
+  found: Movie[],
   ids: number[],
-  selectedMovie: {},
+  selectedMovieId: string,
   entities: {}
 }
 
@@ -15,12 +16,12 @@ const initialState: State = {
   movies: null,
   found: null,
   ids: [],
-  selectedMovie: undefined,
+  selectedMovieId: undefined,
   entities: {}
 };
 
-export const adapter: EntityAdapter<{}> = createEntityAdapter<any>({
-  selectId: (movie) => movie.id,
+export const adapter: EntityAdapter<Movie> = createEntityAdapter<Movie>({
+  selectId: (movie: Movie) => movie.id,
   sortComparer: false,
 });
 
@@ -31,7 +32,7 @@ export function moviesReducer(state = initialState, action: MoviesActions.Movies
         ...state,
         ...adapter.addMany(action.payload, state),
         movies: [...action.payload],
-        selectedMovie: state.selectedMovie
+        selectedMovieId: state.selectedMovieId
       };
 
     case MoviesActions.FOUND_MOVIES:
@@ -45,7 +46,7 @@ export function moviesReducer(state = initialState, action: MoviesActions.Movies
       return {
         ...state,
         found: null,
-        selectedMovie: action.payload
+        selectedMovieId: action.payload
       };
 
     default:
@@ -53,4 +54,4 @@ export function moviesReducer(state = initialState, action: MoviesActions.Movies
   }
 }
 
-export const getSelectedId = (state: State) => state.selectedMovie;
+export const getSelectedId = (state: State) => state.selectedMovieId;

@@ -2,14 +2,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store, select } from '@ngrx/store';
 
-import * as MoviesActions from '../store/movies.actions';
-import * as fromMovies from '../store/reducers/movies.reducers';
-import * as fromStore from '../store/reducers';
+import * as MoviesActions from '../../store/movies.actions';
+import * as fromMovies from '../../store/movies.reducers';
+import * as fromStore from '../../reducers';
 
 @Component({
   selector: 'app-movies',
-  templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.css']
+  templateUrl: '../../pages/movies.component.html'
 })
 
 export class MoviesComponent implements OnInit {

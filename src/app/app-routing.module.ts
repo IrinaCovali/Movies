@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MovieComponent } from './movie/movie.component';
-import { MoviesComponent } from './movies/movies.component';
+import { MovieComponent } from './components/movie.component';
+import { MoviesComponent } from './components/movies.component';
 
 const appRoutes: Routes = [
   { path: 'movies', component: MoviesComponent },

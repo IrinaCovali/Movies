@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { map } from 'rxjs/operators';
 
-import * as MoviesActions from '../store/movies.actions';
-import * as fromMovies from '../store/reducers/movies.reducers';
-import * as fromStore from '../store/reducers';
+import * as MoviesActions from '../../store/movies.actions';
+import * as fromMovies from '../../store/movies.reducers';
+import * as fromStore from '../../reducers';
 
 @Component({
   selector: 'app-movie-page',

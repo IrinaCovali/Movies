@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import * as fromStore from '../store/reducers';
+import * as fromStore from '../../reducers';
 
 @Component({
   selector: 'app-selected-movie-page',
-  templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.css']
+  templateUrl: '../../pages/movie.component.html'
 })
 export class SelectedMovieComponent {
   movie: Observable<{}>;
