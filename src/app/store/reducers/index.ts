@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 
-import * as fromFeature from '../movies.reducers';
+import * as fromFeature from './movies.reducers';
 
 
 export interface AppState {

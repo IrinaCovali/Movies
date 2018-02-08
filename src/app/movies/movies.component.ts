@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store, select } from '@ngrx/store';
 
 import * as MoviesActions from '../store/movies.actions';
-import * as fromMovies from '../store/movies.reducers';
+import * as fromMovies from '../store/reducers/movies.reducers';
 import * as fromStore from '../store/reducers';
 
 @Component({
