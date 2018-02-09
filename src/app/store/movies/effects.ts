@@ -4,7 +4,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
-import { ApiService } from '../../shared/api.service';
+import { MoviesService } from './service';
 import * as MoviesActions from './actions';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class MoviesEffects {
   moviesShow = this.actions$
     .ofType(MoviesActions.SHOW_MOVIES)
     .switchMap((action: MoviesActions.ShowMovies) => {
-      return this.apiService.retrieveTopRated();
+      return this.moviesService.retrieveTopRated();
     })
     .map((movies) => {
       return {
@@ -29,7 +29,7 @@ export class MoviesEffects {
       return action.payload;
     })
     .switchMap((term: string) => {      
-      return this.apiService.searchMovies(term);
+      return this.moviesService.searchMovies(term);
     })
     .map((found) => {
       return {
@@ -38,5 +38,5 @@ export class MoviesEffects {
       }
     });
 
-  constructor(private actions$: Actions, private apiService: ApiService) {}
+  constructor(private actions$: Actions, private moviesService: MoviesService) {}
 }
