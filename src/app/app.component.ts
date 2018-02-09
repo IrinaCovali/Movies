@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl: '../../pages/app.component.html'
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
   constructor(private router: Router) {}

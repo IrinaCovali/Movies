@@ -4,8 +4,8 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
-import { TheMovieDBService } from '../services/themoviedb.service';
-import * as MoviesActions from './movies.actions';
+import { TheMovieDBService } from '../../shared/services/api.service';
+import * as MoviesActions from './actions';
 
 @Injectable()
 export class MoviesEffects {

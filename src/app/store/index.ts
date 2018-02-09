@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 
-import * as fromFeature from '../store/movies.reducers';
+import * as fromFeature from './movies/reducers';
 
 
 export interface AppState {
@@ -29,7 +29,7 @@ export const {
   selectEntities: getMovieEntities,
 } = fromFeature.adapter.getSelectors(getMovieEntitiesState);
 
-export const getSelectedBook = createSelector(
+export const getSelectedMovie = createSelector(
   getMovieEntities,
   getSelectedMovieId,
   (entities, selectedId) => {

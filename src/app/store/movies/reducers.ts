@@ -1,8 +1,8 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-import * as MoviesActions from './movies.actions';
-import { Movie } from '../models/movie'
+import * as MoviesActions from './actions';
+import { Movie } from '../../models/movie'
 
 export interface State extends EntityState<Movie> {
   movies: Movie[],

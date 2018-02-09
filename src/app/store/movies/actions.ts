@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Movie } from '../models/movie';
+import { Movie } from '../../models/movie';
 
 export const SHOW_MOVIES = 'SHOW_MOVIES';
 export const GET_MOVIES = 'GET_MOVIES';
