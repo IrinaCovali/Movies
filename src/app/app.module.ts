@@ -13,7 +13,7 @@ import { MovieComponent } from './pages/movie/movie.component';
 import { SelectedMovieComponent } from './components/selected-movie/selected-movie.component';
 import { TopMovieComponent } from './components/top-movie/top-movie.component';
 import { MoviesComponent } from './pages/movies/movies.component';
-import { TheMovieDBService } from './shared/services/api.service';
+import { ApiService } from './shared/api.service';
 
 import { reducers } from './store';
 import { MoviesEffects } from './store/movies/effects';
@@ -37,7 +37,7 @@ import { environment } from '../environments/environment';
     EffectsModule.forRoot([MoviesEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [TheMovieDBService],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
