@@ -8,21 +8,22 @@ import * as fromStore from '../../store';
 
 @Component({
   selector: 'app-movies',
-  templateUrl: './movies.component.html'
+  templateUrl: './movies.component.html',
+  styleUrls: ['./styling.scss']
 })
 export class MoviesComponent implements OnInit {
-  search: string;
+  private moviePath = 'https://image.tmdb.org/t/p/w300';
+
   moviesState: Observable<fromMovies.State>;
 
   constructor(private store: Store<fromStore.AppState>) {}
 
   ngOnInit() {
     this.moviesState = this.store.select(fromStore.selectFeature);
-    this.store.dispatch(new MoviesActions.ShowMovies());   
+    this.store.dispatch(new MoviesActions.ShowMovies());  
   }
 
   searchRes(val) {
-    this.search = val;    
     this.store.dispatch(new MoviesActions.SearchMovies(val));
   }
 }

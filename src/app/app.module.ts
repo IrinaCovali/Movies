@@ -11,13 +11,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieComponent } from './pages/movie/movie.component';
 import { SelectedMovieComponent } from './components/selected-movie/selected-movie.component';
+import { SearchMoviesComponent } from './components/search-movies/search-movies.component';
 import { TopMovieComponent } from './components/top-movie/top-movie.component';
+import { FoundMovieComponent } from './components/found-movie/found-movie.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { MoviesService } from './store/movies/service';
 
 import { reducers } from './store';
 import { MoviesEffects } from './store/movies/effects';
 import { environment } from '../environments/environment';
+import { HoverClassDirective } from './hover-class.directive';
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import { environment } from '../environments/environment';
     MovieComponent,
     SelectedMovieComponent,
     TopMovieComponent,
-    MoviesComponent
+    SearchMoviesComponent,
+    FoundMovieComponent,
+    MoviesComponent,
+    HoverClassDirective
   ],
   imports: [
     BrowserModule,

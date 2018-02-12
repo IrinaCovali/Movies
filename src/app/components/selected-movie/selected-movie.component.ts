@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { Movie } from '../../models/movie';
 
 @Component({
-  selector: 'app-selected-movie-page',
+  selector: 'app-selected-movie',
   templateUrl: './selected-movie.component.html'
 })
 export class SelectedMovieComponent {

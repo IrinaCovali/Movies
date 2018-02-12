@@ -3,10 +3,10 @@ import { Component, Input } from '@angular/core';
 import { Movie } from '../../models/movie';
 
 @Component({
-  selector: 'top-movie-item',
-  templateUrl: './top-movie.component.html'
+  selector: 'found-movie-item',
+  templateUrl: './found-movie.component.html'
 })
-export class TopMovieComponent {
+export class FoundMovieComponent {
   @Input() movie: Movie;
 
   constructor() {}

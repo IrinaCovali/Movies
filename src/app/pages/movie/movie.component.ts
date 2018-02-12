@@ -14,7 +14,7 @@ import * as fromStore from '../../store';
   selector: 'app-movie-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <app-selected-movie-page [movie]="movie"></app-selected-movie-page>
+    <app-selected-movie [movie]="movie"></app-selected-movie>
   `,
 })
 export class MovieComponent {
