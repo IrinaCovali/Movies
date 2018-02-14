@@ -2,7 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'search-movies',
-  templateUrl: './search-movies.component.html'
+  template: '<input type="text" [ngModel]="search" (ngModelChange)="searched($event)" placeholder="Search for movies">'
 })
 export class SearchMoviesComponent {
   @Output() onSearch = new EventEmitter<string>();

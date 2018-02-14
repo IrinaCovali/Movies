@@ -1,1 +1,4 @@
-<div>{{movie.title}}</div>
+<div *ngIf="movie">
+    <img [src]="image " />
+  {{movie.title}}
+</div>

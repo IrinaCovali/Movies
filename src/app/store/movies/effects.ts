@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
+import { empty } from 'rxjs/observable/empty';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
 
 import { MoviesService } from './service';
 import * as MoviesActions from './actions';
@@ -25,10 +27,14 @@ export class MoviesEffects {
   @Effect()
   moviesSearch = this.actions$
     .ofType(MoviesActions.SEARCH_MOVIES)
+    .debounceTime(500)
     .map((action: MoviesActions.SearchMovies) => {
       return action.payload;
     })
-    .switchMap((term: string) => {      
+    .switchMap((term: string) => {    
+      if (term === '') {
+        return empty();
+      }  
       return this.moviesService.searchMovies(term);
     })
     .map((found) => {

@@ -1,22 +1,22 @@
-
-<div class='container' *ngIf="moviesState | async; else noMoviesBlock">
-    <!-- <search-movies (onSearch)="searchRes($event)"></search-movies>
+<div class="container" *ngIf="moviesState | async; else noMoviesBlock">
+    <search-movies (onSearch)="searchRes($event)"></search-movies>
     
-    <ul>
+    <ul class="found-movies">
       <li *ngFor="let movie of (moviesState | async).found">
         <a [routerLink]="['/movie', movie.id]">
           <found-movie-item [movie]="movie"></found-movie-item>
         </a>
       </li>
-    </ul> -->
+    </ul>
 
-   <div>
+   <div class="top-movies">
+     <h2>Top Rated movies on TMDb</h2>
       <ul>
         <li *ngFor="let movie of (moviesState | async).movies" appHoverClass>
-            <a class='normal' [routerLink]="['/movie', movie.id]">
+            <a class="normal" [routerLink]="['/movie', movie.id]">
               <img [src]="moviePath + movie.poster_path" />
             </a>
-            <div class='info'>
+            <div class="info">
               <top-movie-item [movie]="movie"></top-movie-item>
             </div>
         </li>
