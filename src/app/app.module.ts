@@ -20,7 +20,7 @@ import { MoviesService } from './store/movies/service';
 import { reducers } from './store';
 import { MoviesEffects } from './store/movies/effects';
 import { environment } from '../environments/environment';
-import { HoverClassDirective } from './hover-class.directive';
+import { HoverClassDirective } from './directives/hover-class.directive';
 
 
 @NgModule({
