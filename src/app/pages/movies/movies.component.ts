@@ -9,7 +9,7 @@ import * as fromStore from '../../store';
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./styling.scss']
+  styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
   private moviePath = 'https://image.tmdb.org/t/p/w300';
