@@ -17,7 +17,7 @@ import * as fromStore from '../../store';
     <app-selected-movie [movie]="movie"></app-selected-movie>
   `,
 })
-export class MovieComponent {
+export class MoviePageComponent {
   movieStore: Subscription;
   movie: Observable<Movie>;
 

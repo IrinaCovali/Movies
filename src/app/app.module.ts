@@ -9,12 +9,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MovieComponent } from './pages/movie/movie.component';
+import { MoviePageComponent } from './pages/movie/movie-page.component';
 import { SelectedMovieComponent } from './components/selected-movie/selected-movie.component';
 import { SearchMoviesComponent } from './components/search-movies/search-movies.component';
 import { TopMovieComponent } from './components/top-movie/top-movie.component';
 import { FoundMovieComponent } from './components/found-movie/found-movie.component';
-import { MoviesComponent } from './pages/movies/movies.component';
+import { MoviesPageComponent } from './pages/movies/movies-page.component';
 import { MoviesService } from './store/movies/service';
 
 import { reducers } from './store';
@@ -26,12 +26,12 @@ import { HoverClassDirective } from './directives/hover-class.directive';
 @NgModule({
   declarations: [
     AppComponent,
-    MovieComponent,
+    MoviePageComponent,
     SelectedMovieComponent,
     TopMovieComponent,
     SearchMoviesComponent,
     FoundMovieComponent,
-    MoviesComponent,
+    MoviesPageComponent,
     HoverClassDirective
   ],
   imports: [

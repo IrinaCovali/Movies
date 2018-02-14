@@ -8,10 +8,10 @@ import * as fromStore from '../../store';
 
 @Component({
   selector: 'app-movies',
-  templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss']
+  templateUrl: './movies-page.component.html',
+  styleUrls: ['./movies-page.component.scss']
 })
-export class MoviesComponent implements OnInit {
+export class MoviesPageComponent implements OnInit {
   private moviePath = 'https://image.tmdb.org/t/p/w300';
 
   moviesState: Observable<fromMovies.State>;

@@ -17,12 +17,7 @@ export class MoviesEffects {
     .switchMap((action: MoviesActions.ShowMovies) => {
       return this.moviesService.retrieveTopRated();
     })
-    .map((movies) => {
-      return {
-        type: MoviesActions.GET_MOVIES,
-        payload: movies['results']
-      }
-    });
+    .map(movies => new MoviesActions.GetMovies(movies['results']));
 
   @Effect()
   moviesSearch = this.actions$
@@ -37,12 +32,7 @@ export class MoviesEffects {
       }  
       return this.moviesService.searchMovies(term);
     })
-    .map((found) => {
-      return {
-        type: MoviesActions.FOUND_MOVIES,
-        payload: found['results']
-      }
-    });
+    .map(found => new MoviesActions.FoundMovies(found['results']));
 
   constructor(private actions$: Actions, private moviesService: MoviesService) {}
 }
