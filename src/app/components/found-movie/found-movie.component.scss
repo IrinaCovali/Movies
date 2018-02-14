@@ -1,0 +1,18 @@
+$wet-asphalt: #34495E;
+
+.image-placeholder {
+  display: inline-block;
+  background: #ECF0F1;
+  text-align: center;
+  width: 92px;
+  height: 130px;
+  line-height: 130px;
+}
+
+svg {
+  pointer-events: none;
+  width: 50px;
+  path {
+    fill: transparentize($wet-asphalt, .8);
+  }
+}
