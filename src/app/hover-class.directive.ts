@@ -4,7 +4,6 @@ import { Directive, ElementRef , HostListener } from '@angular/core';
   selector: '[appHoverClass]'
 })
 export class HoverClassDirective {
-  
   constructor(private el: ElementRef) { }
 
   @HostListener('mouseenter') onMouseEnter() {
@@ -12,14 +11,14 @@ export class HoverClassDirective {
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-     this.addClass('out')
+     this.addClass('out');
   }
 
   private getDirection () {
     let w = this.el.nativeElement.offsetWidth,
         h = this.el.nativeElement.offsetHeight,
-        x = (event.pageX - this.el.nativeElement.offsetLeft - (w / 2) * (w > h ? (h / w) : 1)),
-        y = (event.pageY - this.el.nativeElement.offsetTop - (h / 2) * (h > w ? (w / h) : 1)),
+        x = ((<MouseEvent>event).pageX - this.el.nativeElement.offsetLeft - (w / 2) * (w > h ? (h / w) : 1)),
+        y = ((<MouseEvent>event).pageY - this.el.nativeElement.offsetTop - (h / 2) * (h > w ? (w / h) : 1)),
         d = Math.round( Math.atan2(y, x) / 1.57079633 + 5 ) % 4;
       return d;
         
