@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 
 import { MoviesService } from './service';
 import * as MoviesActions from './actions';
+import { getSelectedMovie } from '../index';
 
 @Injectable()
 export class MoviesEffects {
@@ -33,6 +34,14 @@ export class MoviesEffects {
       return this.moviesService.searchMovies(term);
     })
     .map(found => new MoviesActions.FoundMovies(found['results']));
+
+  @Effect()
+  movieSearch = this.actions$
+    .ofType(MoviesActions.SELECT)
+    .switchMap((action: MoviesActions.Select) => {
+      return this.moviesService.getMovie(+action.payload);
+    })
+    .map(movie => new MoviesActions.SelectedMovie(movie));
 
   constructor(private actions$: Actions, private moviesService: MoviesService) {}
 }

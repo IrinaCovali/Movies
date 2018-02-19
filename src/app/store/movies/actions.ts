@@ -8,6 +8,7 @@ export const SEARCH_MOVIES = 'SEARCH_MOVIES';
 export const FOUND_MOVIES = 'FOUND_MOVIES';
 export const GET_MOVIE = 'GET_MOVIE';
 export const SELECT = 'SELECT';
+export const SELECTED_MOVIE = 'SELECTED_MOVIE';
 
 export class ShowMovies implements Action {
   readonly type = SHOW_MOVIES;
@@ -39,4 +40,10 @@ export class Select implements Action {
   constructor(public payload: string) {}
 }
 
-export type MoviesActions = ShowMovies | GetMovies | SearchMovies | FoundMovies | GetMovie | Select;
+export class SelectedMovie implements Action {
+  readonly type = SELECTED_MOVIE;
+
+  constructor(public payload: {}) {}
+}
+
+export type MoviesActions = ShowMovies | GetMovies | SearchMovies | FoundMovies | GetMovie | Select | SelectedMovie;

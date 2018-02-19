@@ -14,18 +14,20 @@ import * as fromStore from '../../store';
   selector: 'app-movie-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <app-selected-movie [movie]="movie"></app-selected-movie>
+    <app-selected-movie [movie]="movie | async"></app-selected-movie>
   `,
 })
 export class MoviePageComponent {
   movieStore: Subscription;
-  movie: Observable<Movie>;
+  movie: Observable<{}>;
 
   constructor(store: Store<fromStore.AppState>, route: ActivatedRoute) {
     this.movieStore = route.params
-      .pipe(map(params => new MoviesActions.Select(params.id))).subscribe(store);   
+      .pipe(map(params => new MoviesActions.Select(params.id))).subscribe(store);  
+      
+      // store.pipe(select(fromStore.getSelectedMovie))
 
-    this.movie = store.pipe(select(fromStore.getSelectedMovie));
+    this.movie = store.pipe(select(fromStore.getSelectedMovieEntity));
   }
 
   ngOnDestroy() {

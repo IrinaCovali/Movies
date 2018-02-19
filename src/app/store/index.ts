@@ -19,6 +19,11 @@ export const getSelectedMovieId = createSelector(
   fromFeature.getSelectedId
 );
 
+export const getSelectedMovieEntity = createSelector(
+  selectFeature,
+  fromFeature.getSelectedMovie
+);
+
 export const getMovieEntitiesState = createSelector(
   selectFeature,
   state => state

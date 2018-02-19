@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Movie } from '../../models/movie';
+import * as config from '../../config';
 
 @Component({
   selector: 'found-movie-item',
@@ -12,13 +13,17 @@ export class FoundMovieComponent implements OnInit {
 
   imageSrc: string;
   poster: boolean;
-  private moviePath: string = 'https://image.tmdb.org/t/p/w92';
+  moviePath: string = config.image.thumbnailUrl;
 
   constructor() { }
 
   ngOnInit() {
     this.poster = this.movie.poster_path ? true : false;
     this.imageSrc = this.moviePath + this.movie.poster_path;
+  }
+
+  get title() {
+    return this.movie.title
   }
 
 }

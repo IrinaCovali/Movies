@@ -11,4 +11,7 @@ export class TopMovieComponent {
 
   constructor() {}
 
+  get title() {
+    return this.movie.title
+  }
 }

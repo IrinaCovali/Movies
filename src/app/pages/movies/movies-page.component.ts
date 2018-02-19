@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store, select } from '@ngrx/store';
 
+import * as config from '../../config';
 import * as MoviesActions from '../../store/movies/actions';
 import * as fromMovies from '../../store/movies/reducers';
 import * as fromStore from '../../store';
@@ -12,7 +13,7 @@ import * as fromStore from '../../store';
   styleUrls: ['./movies-page.component.scss']
 })
 export class MoviesPageComponent implements OnInit {
-  private moviePath = 'https://image.tmdb.org/t/p/w300';
+  private moviePath = config.image.posterUrl;
 
   moviesState: Observable<fromMovies.State>;
 

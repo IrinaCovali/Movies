@@ -9,6 +9,7 @@ export interface State extends EntityState<Movie> {
   found: Movie[],
   ids: number[],
   selectedMovieId: string,
+  selectedMovie: {},
   entities: {}
 }
 
@@ -17,6 +18,7 @@ const initialState: State = {
   found: null,
   ids: [],
   selectedMovieId: undefined,
+  selectedMovie: {},
   entities: {}
 };
 
@@ -32,7 +34,8 @@ export function moviesReducer(state = initialState, action: MoviesActions.Movies
         ...state,
         ...adapter.addMany(action.payload, state),
         movies: [...action.payload],
-        selectedMovieId: state.selectedMovieId
+        selectedMovieId: state.selectedMovieId,
+        selectedMovie: undefined
       };
 
     case MoviesActions.FOUND_MOVIES:
@@ -49,9 +52,16 @@ export function moviesReducer(state = initialState, action: MoviesActions.Movies
         selectedMovieId: action.payload
       };
 
+    case MoviesActions.SELECTED_MOVIE:
+      return {
+        ...state,
+        selectedMovie: action.payload
+      };
+
     default:
       return state;
   }
 }
 
 export const getSelectedId = (state: State) => state.selectedMovieId;
+export const getSelectedMovie = (state: State) => state.selectedMovie;

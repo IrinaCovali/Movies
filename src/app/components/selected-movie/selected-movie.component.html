@@ -1,7 +1,7 @@
-<div *ngIf="movie | async; else noMovieBlock">
-  <div><strong>Title:</strong> {{ (movie | async).title }}</div>
-  <div><strong>Overview:</strong> {{ (movie | async).overview }}</div>
-  <div><strong>Release date:</strong> {{ ((movie | async).release_date) | date:fullDate }} </div>
-  <img [src]="moviePath + (movie | async).poster_path" />
+<div *ngIf="movie; else noMovieBlock">
+  <div><strong>Title:</strong> {{ title }}</div>
+  <div><strong>Overview:</strong> {{ overview }}</div>
+  <div><strong>Release date:</strong> {{ release_date | date:fullDate }} </div>
+  <img [src]="moviePath + poster_path" />
 </div>
 <ng-template #noMovieBlock>Something went wrong</ng-template>
