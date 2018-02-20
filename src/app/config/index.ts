@@ -4,6 +4,5 @@ export const api = {
 }
 
 export const image = {
-  posterUrl: 'https://image.tmdb.org/t/p/w300',
-  thumbnailUrl: 'https://image.tmdb.org/t/p/w92'
+  posterUrl: 'https://image.tmdb.org/t/p/w300'
 }

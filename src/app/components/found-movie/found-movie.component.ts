@@ -1,29 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
-
-import { Movie } from '../../models/movie';
-import * as config from '../../config';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'found-movie-item',
   templateUrl: './found-movie.component.html',
   styleUrls: ['./found-movie.component.scss']
 })
-export class FoundMovieComponent implements OnInit {
-  @Input() movie: Movie;
-
-  imageSrc: string;
-  poster: boolean;
-  moviePath: string = config.image.thumbnailUrl;
+export class FoundMovieComponent {
+  @Input() movie;
 
   constructor() { }
-
-  ngOnInit() {
-    this.poster = this.movie.poster_path ? true : false;
-    this.imageSrc = this.moviePath + this.movie.poster_path;
-  }
 
   get title() {
     return this.movie.title
   }
 
+  get poster() {
+    return this.movie.posterImage
+  }
 }

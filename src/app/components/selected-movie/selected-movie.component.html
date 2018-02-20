@@ -1,7 +1,7 @@
 <div *ngIf="movie; else noMovieBlock">
   <div><strong>Title:</strong> {{ title }}</div>
   <div><strong>Overview:</strong> {{ overview }}</div>
-  <div><strong>Release date:</strong> {{ release_date | date:fullDate }} </div>
-  <img [src]="moviePath + poster_path" />
+  <div><strong>Release date:</strong> {{ release | date:fullDate }} </div>
+  <img *ngIf="poster" [src]="poster" />
 </div>
 <ng-template #noMovieBlock>Something went wrong</ng-template>

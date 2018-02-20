@@ -1,16 +1,11 @@
 import { Component, Input } from '@angular/core';
 
-import { Movie } from '../../models/movie';
-import * as config from '../../config';
-
 @Component({
   selector: 'app-selected-movie',
   templateUrl: './selected-movie.component.html'
 })
 export class SelectedMovieComponent {
-  @Input() movie: Movie;
-
-  moviePath = config.image.posterUrl;
+  @Input() movie;
 
   constructor() {}
 
@@ -22,12 +17,12 @@ export class SelectedMovieComponent {
     return this.movie.overview
   }
 
-  get release_date() {
-    return this.movie.release_date
+  get release() {
+    return this.movie.releaseDate
   }
-
-  get poster_path() {
-    return this.movie.poster_path
+  
+  get poster() {
+    return this.movie.posterImage
   }
 
 }

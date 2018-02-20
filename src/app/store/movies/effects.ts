@@ -6,6 +6,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 
+import { Movie } from '../../models/movie';
 import { MoviesService } from './service';
 import * as MoviesActions from './actions';
 import { getSelectedMovie } from '../index';
@@ -18,7 +19,9 @@ export class MoviesEffects {
     .switchMap((action: MoviesActions.ShowMovies) => {
       return this.moviesService.retrieveTopRated();
     })
-    .map(movies => new MoviesActions.GetMovies(movies['results']));
+    .map(movies => {
+      return new MoviesActions.GetMovies(movies)
+    });
 
   @Effect()
   moviesSearch = this.actions$
@@ -33,7 +36,7 @@ export class MoviesEffects {
       }  
       return this.moviesService.searchMovies(term);
     })
-    .map(found => new MoviesActions.FoundMovies(found['results']));
+    .map(found => new MoviesActions.FoundMovies(found));
 
   @Effect()
   movieSearch = this.actions$
