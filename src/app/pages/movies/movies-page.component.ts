@@ -6,10 +6,8 @@ import * as MoviesActions from '../../store/movies/actions';
 import * as fromMovies from '../../store/movies/reducers';
 import * as fromStore from '../../store';
 
-import * as config from '../../config';
 import { Movie } from '../../models/movie';
-
-import { MoviesService } from '../../store/movies/service';
+import { ApiService } from '../../shared/api.service';
 
 @Component({
   selector: 'app-movies',
@@ -17,20 +15,13 @@ import { MoviesService } from '../../store/movies/service';
   styleUrls: ['./movies-page.component.scss']
 })
 export class MoviesPageComponent implements OnInit {
-  // private moviePath = config.image.posterUrl;
 
   moviesState: Observable<fromMovies.State>;
-  // topRated: Movie[];
 
-  constructor(private store: Store<fromStore.AppState>, private moviesService: MoviesService) {}
+  constructor(private store: Store<fromStore.AppState>, private apiService: ApiService) {}
 
   ngOnInit() {
     this.moviesState = this.store.select(fromStore.selectFeature);
-    // this.store.select(fromStore.selectFeature).subscribe(data => {
-    //   if(data.movies) {
-    //     this.topRated = data.movies.map(movie => new Movie(movie));
-    //   }
-    // });
     this.store.dispatch(new MoviesActions.ShowMovies());  
   }
 

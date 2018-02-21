@@ -16,6 +16,7 @@ import { TopMovieComponent } from './components/top-movie/top-movie.component';
 import { FoundMovieComponent } from './components/found-movie/found-movie.component';
 import { MoviesPageComponent } from './pages/movies/movies-page.component';
 import { MoviesService } from './store/movies/service';
+import { ApiService } from './shared/api.service';
 
 import { reducers } from './store';
 import { MoviesEffects } from './store/movies/effects';
@@ -43,7 +44,7 @@ import { HoverClassDirective } from './directives/hover-class.directive';
     EffectsModule.forRoot([MoviesEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [MoviesService],
+  providers: [MoviesService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
