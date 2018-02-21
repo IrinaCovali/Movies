@@ -7,7 +7,6 @@ import * as fromMovies from '../../store/movies/reducers';
 import * as fromStore from '../../store';
 
 import { Movie } from '../../models/movie';
-import { ApiService } from '../../shared/api.service';
 
 @Component({
   selector: 'app-movies',
@@ -18,7 +17,7 @@ export class MoviesPageComponent implements OnInit {
 
   moviesState: Observable<fromMovies.State>;
 
-  constructor(private store: Store<fromStore.AppState>, private apiService: ApiService) {}
+  constructor(private store: Store<fromStore.AppState>) {}
 
   ngOnInit() {
     this.moviesState = this.store.select(fromStore.selectFeature);
